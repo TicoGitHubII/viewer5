@@ -1,0 +1,37 @@
+<div class="container mx-auto pt-4">
+  <section class="filmstrip mx-auto">
+    <div class="container ">
+      <div class="img-container mx-auto text-center"  >        
+       <img [style.transform]="'rotate(' + rotationAngle + 'deg)'" src="/assets/images/large/7118-b.jpg" alt="Preview" id="preview"  appRotateImg/>
+                 <button (click)="rotateImage()">Rotate</button>
+         <Section>
+            <div class="container">
+                <div class="pageScroll">
+                    <button (click)="onPrevClick()" [disabled]="currentIndex == 0">
+                    <img src="assets/images/previous.png" alt="Previous">
+                    Previous
+                </button>
+                    <button (click)="onNextClick()" [disabled]="currentIndex == products.length - 1">
+                        <img src="assets/images/next.png" alt="Previous">
+                        Next</button>
+                </div>
+            </div>
+         </Section>
+        <div class="img-preview text-center">
+          <div class="img-slide" *ngFor="let img of galleryImages.slice(currentIndex, currentIndex+4); let i=index"
+            [class.active]="i==0">
+            <img src="/assets/images/large/7124-b.jpg" width="250px" alt="Thumbnail-7124-m" appViewerStyle>
+          </div>
+ 
+        </div>
+        </div>
+        </div>
+        </section>
+  <section>
+    <p>
+        There is ability to shift slide not only by amount of all visible slides but also for one item
+      </p>
+     
+  </section>
+  </div>
+  

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Product } from 'src/app/models/product';
+import { ImgArr } from 'src/app/models/imgArr';
 
 @Component({
   selector: 'app-products',
@@ -9,17 +10,26 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductsComponent implements OnInit {
   currentIndex = 0;
+  minDisplayedThumbnails =3;
   products: Product[] = [];
   rotationAngle = 0;
-  galleryImages = [
-    { img1: 'https://picsum.photos/300/200' },
-    { img2: 'https://preview.ibb.co/kPE1D6/clouds.jpg' },
-    { img3: 'https://preview.ibb.co/mwsA6R/img7.jpg' },
-    { img4: 'https://preview.ibb.co/kZGsLm/img9.jpg' },
-    { img5: 'https://preview.ibb.co/jrsA6R/img18.jpg' },
-    { img6: 'https://preview.ibb.co/kPE1D6/clouds.jpg' },
-    { img7: 'https://preview.ibb.co/mwsA6R/img7.jpg' },
-    { img8: 'https://preview.ibb.co/kZGsLm/img8.jpg' },
+
+  galleryImages: ImgArr[] = [
+    { id: '1', image: 'https://picsum.photos/id/1/800/600' },
+    { id: '2', image: 'https://picsum.photos/id/50/800/600' },
+    { id: '3', image: 'https://picsum.photos/id/10/800/600' },
+    { id: '4', image: 'https://picsum.photos/id/130/800/600' },
+    { id: '5', image: 'https://picsum.photos/id/25/800/600' },
+    { id: '6', image: 'https://picsum.photos/id/4/800/600' },
+    { id: '7', image: 'https://picsum.photos/id/1/800/600' },
+    { id: '8', image: 'https://picsum.photos/id/50/800/600' },
+    { id: '9', image: 'https://picsum.photos/id/10/800/600' },
+    { id: '10', image: 'https://picsum.photos/id/130/800/600' },
+    { id: '11', image: 'https://picsum.photos/id/25/800/600' },
+    { id: '12', image: 'https://picsum.photos/id/4/800/600' },
+    { id: '13', image: 'https://picsum.photos/id/25/800/600' },
+    { id: '14', image: 'https://picsum.photos/id/4/800/600' },
+    { id: '15', image: 'https://picsum.photos/id/4/800/600' },
   ];
 
   constructor(private dataService: DataService) {}
@@ -35,15 +45,15 @@ export class ProductsComponent implements OnInit {
   }
 
   onNextClick() {
-    if (this.currentIndex < this.products.length - 1) {
+    if (this.currentIndex < this.  galleryImages.length - 1) {
       this.currentIndex++;
     }
   }
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe((response: Product[]) => {
-      this.products = response;
-      console.log(this.products);
-    });
+    // this.dataService.getData().subscribe((response: Product[]) => {
+    //   this.products = response;
+    //   console.log(this.products);
+    // });
   }
 }

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule}from '@angular/platform-browser/animations';
 import {CarouselModule} from 'ngx-bootstrap/carousel'
 import {PaginationModule} from 'ngx-bootstrap/pagination'
-
 import { AppComponent } from './app.component';
 import { TestComponent } from './components/test/test.component';
 import { ProductComponent } from './components/product/product.component';

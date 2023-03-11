@@ -1,58 +1,66 @@
-<div class="container mx-auto pt-4">
-  <section class="filmstrip mx-auto">
-    <div class="container ">
-      <div class="img-container mx-auto text-center">
-        <div class="profile-container d-flex d-md-flex-inline justify-content-center mx-auto text-center" *ngFor="let product of products.slice(currentIndex,currentIndex+1); let i=index; ">
 
-          <img [style.transform]="'rotate(' + rotationAngle + 'deg)'"  src=".//..//..//../assets/images/large/{{product.image}}" alt="Preview"
-            id="preview" appRotateImg />
-
-          <!-- Profile Data  -->
-          <div class="profile-data mx-auto" >
-            <div class="card border border-0  " >
-              <div class="card-title">  {{product.title}}</div>
-              <div class="card-body ">
-                <div class="card-text text center muted">
-                  <ul class="list-group list-group-flush">
-                    <ol class="list-group-item">{{product.cost}}</ol>
-                    <ol class="list-group-item">{{product.description}}</ol>
-                    <ol class="list-group-item"></ol>
-                    <ol class="list-group-item"></ol>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="controllers d-flex  justify-content-evenly  align-content-right">
-          <div class="pageScroll btn-container-c1 d-flex  d-md-inline-flex ">
-            <button (click)="onPrevClick()" [disabled]="currentIndex == 0">
-              <img src="assets/images/previous.png" alt="Previous">
-              Previous
-            </button>
-            <button (click)="onNextClick()" [disabled]=" currentIndex == products.length - 3">
-              <img src="assets/images/next.png" alt="Previous">
-              Next</button>
-          </div>
-          <div class=" btn-container-c2 ">
-            <div class="rotate-image mx-auto d-flex p-3  justify-content-between">
-              <button (click)="rotateImage()"> <img src="assets/images/rotate-right.png" width="50px"
-                  class="rotate-btn p-2" alt="rightrotate"></button>
-              <button (click)="rotateImage()"><img src="assets/images/rotate-left.png" class="rotate-btn p-2"
-                  width="50px" alt="left rotate"></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="img-preview text-center">
-          <div class="img-slide active" *ngFor="let item of products.slice(currentIndex, currentIndex+4); let i=index">
-            <img  src=".//..//..//../assets/images/thumbnails/{{item.thumbnail}}" alt="Thumbnail-7124-m" appViewerStyle (click)="onThumbnailClick(i)"  />
-          </div>
-
-        </div>
+<div id="container">
+  <header>
+  Code Development Project
+  </header>
+  <div id="main" role="main">
+  <div id="large">
+    <div class="group" *ngFor="let product of products.slice(currentIndex,currentIndex+1); let i=index; ">
+      <img [style.transform]="'rotate(' + rotationAngle + 'deg)'" src=".//..//..//../assets/images/large/{{product.image}}" alt="Large Image" width="430" height="360" appRotateImg id="preview" />
+    
+      <div class="details">
+        <p><strong>Title</strong>{{product.title}}</p>
+                  <p><strong>Description</strong> {{product.description}}</p>
+        <p><strong>Cost</strong> {{product.cost}}</p>
+        <p><strong>ID #</strong> {{product.id}}</p>
+        <p><strong>Thumbnail File</strong> {{product.image}}</p>
+        <p><strong>Large Image File</strong> {{product.image}}</p>
       </div>
     </div>
-  </section>
-  <hr>
-</div>
+  </div>
+  <div class="controllers">
+    <div class="control1 ">
+      <button (click)="onPrevClick()" class="previous" [disabled]="currentIndex == 0">
+        <img src="assets/images/previous.png" alt="Previous">
+        Previous
+      </button>
+      <button (click)="onNextClick()" [disabled]=" currentIndex == products.length - 3">
+        <img src="assets/images/next.png" class="next"alt="next">
+        Next</button>
+    </div>
+    <div class=" control2 ">
+      <div class="rotate-image mx-auto d-flex p-3  justify-content-between">
+        <button (click)="rotateImage()"> <img src="assets/images/rotate-right.png" width="50px"
+            class="rotate-btn p-2" alt="rightrotate"></button>
+        <button (click)="rotateImage()"><img src="assets/images/rotate-left.png" class="rotate-btn p-2"
+            width="50px" alt="left rotate"></button>
+      </div>
+    </div>
+  </div>
+  <div class="thumbnails">
+    <div class="group" *ngFor="let item2 of products.slice(currentIndex, currentIndex+4); let i=index">
+      <a href="#" title="{{item2.id}}">
+        <img src=".//..//..//../assets/images/thumbnails/{{item2.thumbnail}}" alt="7111-m" width="145" height="121" appViewerStyle  (click)="onThumbnailClick(i)" />
+        <span>{{item2.id}}</span>
+      </a>
+       <!-- <a href="#" class="active" title="7112">
+        <img src=".//..//..//../assets/images/thumbnails/{{item2.thumbnail}}" alt="7111-m" width="145" height="121" />
+        <span>{{item2.id}}</span>
+      </a>
+      <a href="#" title="7118">
+        <img src=".//..//..//../assets/images/thumbnails/{{item2.thumbnail}}" alt="7111-m" width="145" height="121" />
+        <span>{{item2.id}}</span>
+      </a>
+      <a href="#" title="7124">
+        <img src=".//..//..//../assets/images/thumbnails/{{item2.thumbnail}}" alt="7111-m" width="145" height="121" />
+        <span>{{item2.id}}</span>
+      </a>  -->
+      <span class="previous disabled" title="Previous">Previous</span>
+      <a href="#" class="next" title="Next">Next</a>
+    </div>
+  </div>
+  </div>
+  <footer>
+  <a href="instructions.pdf">Download PDF Instructions</a>
+  </footer>
+</div> <!-- eo #container -->

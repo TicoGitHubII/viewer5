@@ -36,8 +36,8 @@ export class ProductsComponent implements OnInit {
 
  
   onThumbnailClick(index: number){
-    const productIndex = this.currentIndex + index;
-    console.log(`onThumbnailClick : clicked slide : ${index} Currentndex${productIndex}`)
+    const productIndex =  index;
+    // console.log(`onThumbnailClick : clicked slide : ${index} Currentndex${productIndex}`)
     this.currentIndex = productIndex
  
   

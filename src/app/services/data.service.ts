@@ -12,7 +12,7 @@ export class DataService {
 
   public getData(): Observable<Product[]>{
     return this.http.get<Product[]>(
-      ''
+      'http://localhost:3000/api/data/'
     )
   }
 }

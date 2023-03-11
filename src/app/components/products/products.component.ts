@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ElementRef} from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Product } from 'src/app/models/product';
-import { ImgArr } from 'src/app/models/imgArr';
 
 @Component({
   selector: 'app-products',
@@ -13,26 +12,10 @@ export class ProductsComponent implements OnInit {
   minDisplayedThumbnails =3;
   products: Product[] = [];
   rotationAngle = 0;
+   slideIndex =0 ;
+ 
 
-  galleryImages: ImgArr[] = [
-    { id: '1', image: 'https://picsum.photos/id/1/800/600' },
-    { id: '2', image: 'https://picsum.photos/id/50/800/600' },
-    { id: '3', image: 'https://picsum.photos/id/10/800/600' },
-    { id: '4', image: 'https://picsum.photos/id/130/800/600' },
-    { id: '5', image: 'https://picsum.photos/id/25/800/600' },
-    { id: '6', image: 'https://picsum.photos/id/4/800/600' },
-    { id: '7', image: 'https://picsum.photos/id/1/800/600' },
-    { id: '8', image: 'https://picsum.photos/id/50/800/600' },
-    { id: '9', image: 'https://picsum.photos/id/10/800/600' },
-    { id: '10', image: 'https://picsum.photos/id/130/800/600' },
-    { id: '11', image: 'https://picsum.photos/id/25/800/600' },
-    { id: '12', image: 'https://picsum.photos/id/4/800/600' },
-    { id: '13', image: 'https://picsum.photos/id/25/800/600' },
-    { id: '14', image: 'https://picsum.photos/id/4/800/600' },
-    { id: '15', image: 'https://picsum.photos/id/4/800/600' },
-  ];
-
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,  private el : ElementRef) {}
 
   rotateImage() {
     this.rotationAngle += 90;
@@ -45,15 +28,30 @@ export class ProductsComponent implements OnInit {
   }
 
   onNextClick() {
-    if (this.currentIndex < this.  galleryImages.length - 1) {
+    if (this.currentIndex < this. products.length - 1) {
       this.currentIndex++;
     }
   }
 
+
+ 
+  onThumbnailClick(index: number){
+    const productIndex = this.currentIndex + index;
+    console.log(`onThumbnailClick : clicked slide : ${index} Currentndex${productIndex}`)
+    this.currentIndex = productIndex
+ 
+  
+  }
+
+
+  
+
   ngOnInit(): void {
-    // this.dataService.getData().subscribe((response: Product[]) => {
-    //   this.products = response;
-    //   console.log(this.products);
-    // });
+    this.dataService.getData().subscribe((response: Product[]) => {
+      this.products = response;
+      console.log(this.products);
+     
+      console.log(`ngOnInit Render : Currentndex${this.currentIndex}`)
+    });
   }
 }

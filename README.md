@@ -1,27 +1,46 @@
-# Viewer5
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+# Project Title
 
-## Development server
+A brief description of what this project does and who it's for
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install viewers6 with npm
 
-## Build
+```bash
+  npm install viewers6
+  cd viewers6
+```
+Application
+dir: viewer5/
+npm start
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Server
+dir: viewer5/viewer5-service
+npm start app.js
+    
+## API Reference
 
-## Running unit tests
+#### Get all items
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```http
+  GET /api/data
+```
 
-## Running end-to-end tests
+#### Get item
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```http
+  GET /api/data/id
+```
 
-## Further help
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Authors
+
+- [@TicoGitHubII](https://github.com/TicoGitHubII)
+

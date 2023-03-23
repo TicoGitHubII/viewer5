@@ -9,22 +9,41 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
+app.use(cors(
+  {
+    // origin: ['http://localhost/4200','http://localhost/3000', 'http://localhost/3000/api/data']
+   origin: '*'
 
+   
+  }
+));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
-app.use(cors());
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-app.get("/api/data", (req, res) => {
+// const corsOptions ={
+//   origin: 'http://localhost:3000',
+//   optionsSuccess: 200
+// }
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
+
+
+
+app.get("/api/data",(req, res) => {
   console.log("App data  ", __dirname );
   res.sendFile('templates.json', {root:__dirname + './/../z-data'});
 });
